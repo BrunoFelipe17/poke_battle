@@ -1,57 +1,19 @@
-# Exercício de Backend
+# PokeBattle
 
-![pokefight header](images/header.png)
+To start your Phoenix server:
 
-## Introdução
+  * Install dependencies with `mix deps.get`
+  * Create and migrate your database with `mix ecto.setup`
+  * Start Phoenix endpoint with `mix phx.server`
 
-A proposta do exercício de backend da Brainn é ser simples e divertido, com temática lúdica de Pokémon.
+Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-## Exercício
+Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
-O objetivo do exercício é a construção de uma **API Web** que implementa geração de batalhas entre pokémons.
+## Learn more
 
-### Recursos
-
-- [PokéAPI](https://pokeapi.co/)
-
-### Requisitos e funcionalidades
-
-A API desenvolvida deve possuir 3 rotas:
-
-- Criar uma batalha de pokémon (create)
-- Consultar o resultado de uma batalha (show)
-- Listar os resultados de todas as batalhas (index)
-
-Para isso, a aplicação deve fazer consultas de informações de pokémons à [PokéAPI](https://pokeapi.co/) e gerar batalhas entre os pokémons solicitados. As batalhas geradas devem ser persistidas num banco de dados de forma que possam ser consultadas posteriormente.
-
-É esperado que sejam retornadas informações dos pokémons envolvidos e quem foi o vitorioso nas batalhas. Dica: o pokémon vitorioso pode ser decidido randomicamente.
-
-
-**Alternativas para a rota de criação:**
-
-- Síncrona:
-  - Realizar as chamadas à [PokéAPI](https://pokeapi.co/) no mesmo momento em que são realizadas as chamadas às rotas da API a ser desenvolvida.
-- Assíncrona:
-  - Executar as requisições em background na [PokéAPI](https://pokeapi.co/).
-  - Devolver o resultado via webhook.
-
-
-### Tecnologias sugeridas
-
-- Elixir / Node.js
-- Banco de dados apropriado
-
-
-## Dúvidas
-
-Se você possui alguma dúvida sobre o desafio, você pode entrar em contato por e-mail com o recrutamento que já estará acompanhando seu processo ou através dos e-mails mariana@brainn.co e/ou diogo@brainn.co.
-
-## Caso tenha finalizado e...
-
-#### → Já está participando do processo
-
-Basta sinalizar por e-mail que finalizou o exercício para darmos continuidade ao processo.
-
-#### → Ainda não está participando do processo
-
-Basta enviar o link do seu teste para mariana@brainn.co e/ou diogo@brainn.co para quem sabe chamarmos você para um bate-papo :blush: :v:
+  * Official website: https://www.phoenixframework.org/
+  * Guides: https://hexdocs.pm/phoenix/overview.html
+  * Docs: https://hexdocs.pm/phoenix
+  * Forum: https://elixirforum.com/c/phoenix-forum
+  * Source: https://github.com/phoenixframework/phoenix
