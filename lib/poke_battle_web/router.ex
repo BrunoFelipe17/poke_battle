@@ -7,6 +7,8 @@ defmodule PokeBattleWeb.Router do
 
   scope "/api", PokeBattleWeb do
     pipe_through :api
+
+    resources "/battle", BattleController, only: [:index, :show, :create]
   end
 
   # Enables LiveDashboard only for development
