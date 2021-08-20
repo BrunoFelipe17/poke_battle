@@ -13,6 +13,8 @@ defmodule PokeBattle.Battle do
     timestamps()
   end
 
+  def build(changeset), do: apply_action(changeset, :create)
+
   def changeset(attrs) do
     %__MODULE__{}
     |> cast(attrs, @required_params)
