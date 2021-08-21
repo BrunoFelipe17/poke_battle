@@ -1,6 +1,10 @@
 defmodule PokeBattleWeb.BattleController do
   use PokeBattleWeb, :controller
 
+  alias PokeBattleWeb.FallbackController
+
+  action_fallback FallbackController
+
   def index(conn, _) do
     with {:ok, battles} <- PokeBattle.fetch_all_battles() do
       conn
