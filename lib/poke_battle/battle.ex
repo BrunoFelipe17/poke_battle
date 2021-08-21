@@ -5,6 +5,8 @@ defmodule PokeBattle.Battle do
   @primary_key {:id, :binary_id, autogenerate: true}
   @required_params [:pokemon_one, :pokemon_two]
 
+  @derive {Jason.Encoder, only: @required_params ++ [:id, :winner]}
+
   schema "poke_battle" do
     field :pokemon_one, :string
     field :pokemon_two, :string
