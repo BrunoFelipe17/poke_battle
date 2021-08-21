@@ -16,4 +16,12 @@ defmodule PokeBattleWeb.BattleController do
       |> render("show.json", battle: battle)
     end
   end
+
+  def create(conn, params) do
+    with {:ok, %PokeBattle.Battle{id: id}} <- PokeBattle.create_battle(params) do
+      conn
+      |> put_status(:created)
+      |> render("create.json", id: id)
+    end
+  end
 end
