@@ -2,7 +2,7 @@ defmodule PokeBattle.Battle.Get do
   alias PokeBattle.{Battle, Error, Repo}
 
   def all() do
-    Repo.all(Battle)
+    {:ok, Repo.all(Battle)}
   end
 
   def by_id(id) do
