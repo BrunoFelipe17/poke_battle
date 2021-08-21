@@ -9,9 +9,12 @@ defmodule PokeBattle.PokeAPI.Client do
   def get_pokemon(id_or_name) do
     "pokemon/#{id_or_name}"
     |> get()
-    |> handle_get()
+    |> handle_get(id_or_name)
   end
 
-  defp handle_get({:ok, %Tesla.Env{status: 200, body: body}}), do: {:ok, body}
-  defp handle_get({:ok, %Tesla.Env{status: 404}}), do: {:error, Error.pokemon_not_found()}
+  defp handle_get({:ok, %Tesla.Env{status: 200, body: body}}, _pokemon_name), do: {:ok, body}
+
+  defp handle_get({:ok, %Tesla.Env{status: 404}}, pokemon_name) do
+    {:error, Error.pokemon_not_found(pokemon_name)}
+  end
 end

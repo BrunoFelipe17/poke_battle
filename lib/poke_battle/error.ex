@@ -12,6 +12,9 @@ defmodule PokeBattle.Error do
     }
   end
 
-  def pokemon_not_found, do: build(:not_found, "Pokemon not found")
+  def pokemon_not_found(pokemon_name) do
+    build(:not_found, "Pokemon '#{pokemon_name}' not found")
+  end
+
   def battle_not_found, do: build(:not_found, "Battle not found")
 end
