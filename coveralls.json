@@ -1,0 +1,13 @@
+{
+  "coverage_options": {
+    "output_dir": "cover/",
+    "minimum_coverage": 0
+  },
+
+  "skip_files": [
+    "test/*",
+    "lib/poke_battle/application.ex",
+    "lib/poke_battle/repo.ex",
+    "lib/poke_battle_web.ex"
+  ]
+}
