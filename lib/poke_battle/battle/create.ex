@@ -1,6 +1,12 @@
 defmodule PokeBattle.Battle.Create do
+  @moduledoc """
+    A module to create battle with two pokemons
+  """
   alias PokeBattle.{Battle, Battle.Winner, PokeAPI.Client, Repo}
 
+  @doc """
+    Given two valids pokemons, creates a battle
+  """
   def call(%{"pokemon_one" => pokemon_one, "pokemon_two" => pokemon_two} = params) do
     winner = Winner.set_winner(pokemon_one, pokemon_two)
 

@@ -1,6 +1,6 @@
 defmodule PokeBattle do
-  alias PokeBattle.Battle.Get, as: GetBattle
   alias PokeBattle.Battle.Create, as: CreateBattle
+  alias PokeBattle.Battle.Get, as: GetBattle
   alias PokeBattle.PokeAPI.Client
 
   @moduledoc """

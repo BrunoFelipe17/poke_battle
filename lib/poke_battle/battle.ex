@@ -1,4 +1,7 @@
 defmodule PokeBattle.Battle do
+  @moduledoc """
+    A module to create Battle schema and changeset
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

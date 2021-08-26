@@ -1,4 +1,7 @@
 defmodule PokeBattle.PokeAPI.Client do
+  @moduledoc """
+    Provides methods to handle informations from PokeAPI using Tesla lib
+  """
   use Tesla
 
   alias PokeBattle.Error
@@ -6,6 +9,9 @@ defmodule PokeBattle.PokeAPI.Client do
   plug Tesla.Middleware.BaseUrl, "https://pokeapi.co/api/v2/"
   plug Tesla.Middleware.JSON
 
+  @doc """
+    Returns all the pokemon informations
+  """
   def get_pokemon(pokemon) do
     "pokemon/#{pokemon}"
     |> get()
@@ -18,6 +24,9 @@ defmodule PokeBattle.PokeAPI.Client do
     {:error, Error.pokemon_not_found(pokemon_name)}
   end
 
+  @doc """
+    Returns some pokemon informations
+  """
   def get_pokemon_informations(pokemon) do
     pokemon_information =
       "pokemon/#{pokemon}"
