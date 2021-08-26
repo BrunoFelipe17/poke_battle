@@ -3,9 +3,9 @@ defmodule PokeBattle.Battle do
   import Ecto.Changeset
 
   @primary_key {:id, :binary_id, autogenerate: true}
-  @required_params [:pokemon_one, :pokemon_two]
+  @required_params [:pokemon_one, :pokemon_two, :winner]
 
-  @derive {Jason.Encoder, only: @required_params ++ [:id, :winner]}
+  @derive {Jason.Encoder, only: @required_params ++ [:id]}
 
   schema "poke_battle" do
     field :pokemon_one, :string

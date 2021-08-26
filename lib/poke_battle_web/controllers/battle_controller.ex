@@ -14,10 +14,19 @@ defmodule PokeBattleWeb.BattleController do
   end
 
   def show(conn, %{"id" => id}) do
-    with {:ok, %PokeBattle.Battle{} = battle} <- PokeBattle.fetch_by_id(id) do
+    with {:ok, %PokeBattle.Battle{pokemon_one: pokemon_one, pokemon_two: pokemon_two} = battle} <-
+           PokeBattle.fetch_by_id(id),
+         {:ok, pokemon_one_info} <-
+           PokeBattle.pokemon_infos(pokemon_one),
+         {:ok, pokemon_two_info} <-
+           PokeBattle.pokemon_infos(pokemon_two) do
       conn
       |> put_status(:ok)
-      |> render("show.json", battle: battle)
+      |> render("show.json",
+        battle: battle,
+        pokemon_one_info: pokemon_one_info,
+        pokemon_two_info: pokemon_two_info
+      )
     end
   end
 

@@ -6,15 +6,32 @@ defmodule PokeBattle.PokeAPI.Client do
   plug Tesla.Middleware.BaseUrl, "https://pokeapi.co/api/v2/"
   plug Tesla.Middleware.JSON
 
-  def get_pokemon(id_or_name) do
-    "pokemon/#{id_or_name}"
+  def get_pokemon(pokemon) do
+    "pokemon/#{pokemon}"
     |> get()
-    |> handle_get(id_or_name)
+    |> handle_get(pokemon)
   end
 
   defp handle_get({:ok, %Tesla.Env{status: 200, body: body}}, _pokemon_name), do: {:ok, body}
 
   defp handle_get({:ok, %Tesla.Env{status: 404}}, pokemon_name) do
     {:error, Error.pokemon_not_found(pokemon_name)}
+  end
+
+  def get_pokemon_informations(pokemon) do
+    pokemon_information =
+      "pokemon/#{pokemon}"
+      |> get()
+      |> handle_information()
+
+    {:ok, pokemon_information}
+  end
+
+  defp handle_information({:ok, %Tesla.Env{status: 200, body: body}}) do
+    %{
+      "weight" => body["weight"],
+      "height" => body["height"],
+      "base_experience" => body["base_experience"]
+    }
   end
 end

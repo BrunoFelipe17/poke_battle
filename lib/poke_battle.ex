@@ -1,6 +1,7 @@
 defmodule PokeBattle do
   alias PokeBattle.Battle.Get, as: GetBattle
   alias PokeBattle.Battle.Create, as: CreateBattle
+  alias PokeBattle.PokeAPI.Client
 
   @moduledoc """
   PokeBattle keeps the contexts that define your domain
@@ -12,4 +13,5 @@ defmodule PokeBattle do
   defdelegate fetch_all_battles, to: GetBattle, as: :all
   defdelegate fetch_by_id(id), to: GetBattle, as: :by_id
   defdelegate create_battle(params), to: CreateBattle, as: :call
+  defdelegate pokemon_infos(pokemon_name), to: Client, as: :get_pokemon_informations
 end
