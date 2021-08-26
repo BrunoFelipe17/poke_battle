@@ -8,12 +8,7 @@ defmodule PokeBattle.Battle.Create do
       params
       |> Map.put_new("winner", winner)
 
-    IO.inspect(params)
-    IO.inspect(new_params)
-
     changeset = Battle.changeset(new_params)
-
-    IO.inspect(changeset)
 
     with {:ok, %Battle{}} <- Battle.build(changeset),
          {:ok, _} <- Client.get_pokemon(pokemon_one),

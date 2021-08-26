@@ -5,8 +5,6 @@ defmodule PokeBattleWeb.FallbackController do
   alias PokeBattleWeb.ErrorView
 
   def call(conn, {:error, %Error{status: status, result: result}}) do
-    IO.inspect(result)
-
     conn
     |> put_status(status)
     |> put_view(ErrorView)
