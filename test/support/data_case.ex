@@ -16,6 +16,8 @@ defmodule PokeBattle.DataCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+
   using do
     quote do
       alias PokeBattle.Repo
@@ -28,10 +30,10 @@ defmodule PokeBattle.DataCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(PokeBattle.Repo)
+    :ok = Sandbox.checkout(PokeBattle.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(PokeBattle.Repo, {:shared, self()})
+      Sandbox.mode(PokeBattle.Repo, {:shared, self()})
     end
 
     :ok
