@@ -6,6 +6,8 @@ defmodule PokeBattle.PokeAPI.Client do
 
   alias PokeBattle.Error
 
+  @behaviour PokeBattle.PokeAPI.Behaviour
+
   plug Tesla.Middleware.BaseUrl, "https://pokeapi.co/api/v2/"
   plug Tesla.Middleware.JSON
 
