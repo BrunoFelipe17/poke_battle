@@ -2,7 +2,7 @@ defmodule PokeBattle.Battle.Create do
   @moduledoc """
     A module to create battle with two pokemons
   """
-  alias PokeBattle.{Battle, Battle.Winner, PokeAPI.Client, Repo}
+  alias PokeBattle.{Battle, Battle.Winner, Repo}
 
   @doc """
     Given two valids pokemons, creates a battle
@@ -17,10 +17,14 @@ defmodule PokeBattle.Battle.Create do
     changeset = Battle.changeset(new_params)
 
     with {:ok, %Battle{}} <- Battle.build(changeset),
-         {:ok, _} <- Client.get_pokemon(pokemon_one),
-         {:ok, _} <- Client.get_pokemon(pokemon_two),
+         {:ok, _} <- client().get_pokemon(pokemon_one),
+         {:ok, _} <- client().get_pokemon(pokemon_two),
          {:ok, %Battle{}} = battle <- Repo.insert(changeset) do
       battle
     end
+  end
+
+  defp client do
+    Application.fetch_env!(:poke_battle, __MODULE__)[:poke_api_adapter]
   end
 end
