@@ -10,6 +10,8 @@ use Mix.Config
 config :poke_battle,
   ecto_repos: [PokeBattle.Repo]
 
+config :poke_battle, PokeBattle.Battle.Create, poke_api_adapter: PokeBattle.PokeAPI.Client
+
 # Configures the endpoint
 config :poke_battle, PokeBattleWeb.Endpoint,
   url: [host: "localhost"],
