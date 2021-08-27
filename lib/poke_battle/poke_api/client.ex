@@ -29,9 +29,9 @@ defmodule PokeBattle.PokeAPI.Client do
   @doc """
     Returns some pokemon informations
   """
-  def get_pokemon_informations(pokemon) do
+  def get_pokemon_informations(url \\ @baseurl, pokemon) do
     pokemon_information =
-      "pokemon/#{pokemon}"
+      "#{url}/#{pokemon}"
       |> get()
       |> handle_information()
 
