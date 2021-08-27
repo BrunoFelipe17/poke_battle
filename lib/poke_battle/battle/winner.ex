@@ -7,13 +7,16 @@ defmodule PokeBattle.Battle.Winner do
     Randomly generate a winner
   """
   def set_winner(pokemon_one, pokemon_two) do
-    winner =
-      if :rand.uniform(10) <= 5 do
-        pokemon_one
-      else
-        pokemon_two
-      end
-
+    random_number = :rand.uniform(10)
+    winner = random_winner(pokemon_one, pokemon_two, random_number)
     winner
+  end
+
+  defp random_winner(pokemon_one, _pokemon_two, n) when is_integer(n) and n < 5 do
+    pokemon_one
+  end
+
+  defp random_winner(_pokemon_one, pokemon_two, n) when is_integer(n) do
+    pokemon_two
   end
 end
