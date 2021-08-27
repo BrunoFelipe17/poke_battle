@@ -8,14 +8,14 @@ defmodule PokeBattle.PokeAPI.Client do
 
   @behaviour PokeBattle.PokeAPI.Behaviour
 
-  plug Tesla.Middleware.BaseUrl, "https://pokeapi.co/api/v2/"
+  @baseurl "https://pokeapi.co/api/v2/pokemon"
   plug Tesla.Middleware.JSON
 
   @doc """
     Returns all the pokemon informations
   """
-  def get_pokemon(pokemon) do
-    "pokemon/#{pokemon}"
+  def get_pokemon(url \\ @baseurl, pokemon) do
+    "#{url}/#{pokemon}"
     |> get()
     |> handle_get(pokemon)
   end
