@@ -12,10 +12,14 @@ defmodule PokeBattle.CreateTest do
       params = build(:pokemon)
       IO.inspect(params)
 
-      expect(ClientMock, :get_pokemon, fn _pokemon -> nil end)
+      {ok, pokemon_info} = File.read("test/pokemon.json")
+
+      expect(ClientMock, :get_pokemon, 2, fn pokemon -> {:ok, pokemon} end)
+
       response = Create.call(params)
 
-      assert response == "Leozinho"
+      assert {:ok, %PokeBattle.Battle{pokemon_one: "pikachu", pokemon_two: "charmeleon"}} =
+               response
     end
   end
 end
