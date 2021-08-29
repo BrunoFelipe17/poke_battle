@@ -10,6 +10,7 @@
     "lib/poke_battle/repo.ex",
     "lib/poke_battle_web.ex",
     "lib/poke_battle_web/router.ex",
-    "lib/poke_battle_web/telemetry.ex"
+    "lib/poke_battle_web/telemetry.ex",
+    "lib/poke_battle_web/channels/user_socket"
   ]
 }
